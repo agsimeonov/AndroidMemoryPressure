@@ -15,8 +15,12 @@ public final class MemInfo extends Activity {
         return Runtime.getRuntime().maxMemory();
     }
     
-    public static long getFreeHeap() {
-    	return Runtime.getRuntime().freeMemory();
+    public static long getCurrentHeap() {
+    	return Runtime.getRuntime().totalMemory();
+    }
+    
+    public static long getUsedHeap() {
+    	return getCurrentHeap() - Runtime.getRuntime().freeMemory();
     }
     
     public static long getTotalMem() {
