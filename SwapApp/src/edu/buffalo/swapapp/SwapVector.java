@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.RandomAccess;
 
 public class SwapVector<E extends Serializable> extends AbstractList<E> 
-                                                implements List<E>,
+                                                implements Swappable,
+                                                           List<E>,
                                                            RandomAccess, 
                                                            Cloneable, 
                                                            java.io.Serializable {
@@ -32,4 +33,10 @@ public class SwapVector<E extends Serializable> extends AbstractList<E>
         // TODO Auto-generated method stub
         return 0;
     }
+
+	@Override
+	public long overhead() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
