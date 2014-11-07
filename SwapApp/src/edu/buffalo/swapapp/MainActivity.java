@@ -1,6 +1,6 @@
 package edu.buffalo.swapapp;
 
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,6 @@ import java.util.List;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -40,14 +39,29 @@ public class MainActivity extends Activity {
         Log.i("current heap", "" + (MemUtil.getCurrentHeap() >>20)); 
         Log.i("used heap", "" + (MemUtil.getUsedHeap() >>20));   
         
-        String FILENAME = "hello_file";
         String string = "hello world!";
 
         FileOutputStream fos;
 		try {
-			fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+			fos = SwapUtil.getFileOutputStream(this, 5, false);
 	        fos.write(string.getBytes());
 	        fos.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		FileInputStream fis;
+		try {
+			fis = SwapUtil.getFileInputStream(this, 5, false);
+			StringBuilder builder = new StringBuilder();
+			int ch;
+			while((ch = fis.read()) != -1){
+			    builder.append((char)ch);
+			}
+
+			System.out.println(builder.toString());
+	        fis.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
