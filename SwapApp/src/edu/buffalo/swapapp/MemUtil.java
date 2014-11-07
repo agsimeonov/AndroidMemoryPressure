@@ -9,7 +9,7 @@ import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
 import android.util.Log;
 
-public final class MemInfo extends Activity {
+public final class MemUtil extends Activity {
     
     public static long getMaxHeap() {
         return Runtime.getRuntime().maxMemory();
