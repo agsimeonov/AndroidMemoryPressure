@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.List;
 import java.util.RandomAccess;
+import java.util.Vector;
+
+import android.content.Context;
 
 public class SwapVector<E extends Serializable> extends AbstractList<E> 
                                                 implements Swappable,
@@ -11,15 +14,19 @@ public class SwapVector<E extends Serializable> extends AbstractList<E>
                                                            RandomAccess, 
                                                            Cloneable, 
                                                            java.io.Serializable {
-	protected int capacityIncrement;
-	private static final long serialVersionUID = -8062241491045229885L;
+    protected int capacityIncrement;
+    protected Context context;
+    protected boolean internal = true;
+    protected Vector<E> vector;
+    private static final long serialVersionUID = -8062241491045229885L;
     
-    public SwapVector(int initialCapacity, int capacityIncrement) {
+    public SwapVector(int initialCapacity, int capacityIncrement, Context context) {
         super();
         if (initialCapacity < 0)
             throw new IllegalArgumentException("Illegal Capacity: "+ initialCapacity);
-        // Create file of given initialCapacity perhaps?
+        
         this.capacityIncrement = capacityIncrement;
+        this.context = context;
     }
 
     @Override
@@ -34,9 +41,9 @@ public class SwapVector<E extends Serializable> extends AbstractList<E>
         return 0;
     }
 
-	@Override
-	public long overhead() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public long overhead() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }

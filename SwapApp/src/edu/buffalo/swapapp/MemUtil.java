@@ -16,19 +16,19 @@ public final class MemUtil extends Activity {
     }
     
     public static long getCurrentHeap() {
-    	return Runtime.getRuntime().totalMemory();
+        return Runtime.getRuntime().totalMemory();
     }
     
     public static long getUsedHeap() {
-    	return getCurrentHeap() - Runtime.getRuntime().freeMemory();
+        return getCurrentHeap() - Runtime.getRuntime().freeMemory();
     }
     
     public static long getTotalMem() {
-    	return scanProcForField("/proc/meminfo", "MemTotal");
+        return scanProcForField("/proc/meminfo", "MemTotal");
     }
     
     public static long getFreeMem() {
-    	return scanProcForField("/proc/meminfo", "MemFree");
+        return scanProcForField("/proc/meminfo", "MemFree");
     }
     
     public static long getAvailableMem(Activity activity) {
