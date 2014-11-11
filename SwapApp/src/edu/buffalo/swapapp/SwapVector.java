@@ -40,10 +40,21 @@ public class SwapVector<E extends Serializable> extends AbstractList<E>
         // TODO Auto-generated method stub
         return 0;
     }
+    
+    public boolean add(E e) {
+        
+        return true;
+    }
 
     @Override
-    public long overhead() {
+    public boolean swap() {
         // TODO Auto-generated method stub
-        return 0;
+        return false;
+    }
+
+    @Override
+    public boolean unswap() {
+        // TODO Auto-generated method stub
+        return false;
     }
 }

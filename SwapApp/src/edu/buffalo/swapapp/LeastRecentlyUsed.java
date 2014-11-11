@@ -31,7 +31,7 @@ public class LeastRecentlyUsed extends Policy {
     }
 
     @Override
-    boolean trigger() {
+    public boolean trigger() {
         if ((MemUtil.getFreeMem() / MemUtil.getTotalMem()) < .1)
             return true;
         if ((MemUtil.getUsedHeap() / MemUtil.getMaxHeap()) > .9)
